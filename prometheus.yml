@@ -1,0 +1,7 @@
+scrape_configs:
+  - job_name: jenkins
+    metrics_path: /metrics
+    scrape_interval: 10s
+    scrape_timeout: 10s
+    static_configs:
+      - targets: ['jenkins-exporter:9118']

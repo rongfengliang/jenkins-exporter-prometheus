@@ -1,0 +1,23 @@
+version: "3"
+services: 
+    jenkins: 
+      image: jenkins/jenkins:lts-slim
+      ports:
+      - "8080:8080"
+    jenkins-exporter:
+      image: dalongrong/jenkins_exporter
+      env_file:
+      - .env
+      ports:
+      - "9118:9118"
+    grafana:
+      image: grafana/grafana    
+      ports:
+      - "3000:3000"
+    prometheus:
+      image: prom/prometheus
+      volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+      ports:
+      - "9090:9090"  
+  
