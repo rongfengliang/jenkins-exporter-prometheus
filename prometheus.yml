@@ -5,3 +5,15 @@ scrape_configs:
     scrape_timeout: 10s
     static_configs:
       - targets: ['jenkins-exporter:9118']
+  - job_name: jenkins2
+    metrics_path: /metrics
+    scrape_interval: 10s
+    scrape_timeout: 10s
+    static_configs:
+      - targets: ['jenkins-exporter2:9103']
+  - job_name: jenkins3
+    metrics_path: /metrics
+    scrape_interval: 10s
+    scrape_timeout: 10s
+    static_configs:
+      - targets: ['jenkins-exporter2:9103']

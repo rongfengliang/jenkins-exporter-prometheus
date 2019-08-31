@@ -37,7 +37,8 @@ import file  jenkins-exporter_rev1.json
 
 ## some notes
 
-tboerger/jenkins-exporter also is a better choose
+tboerger/jenkins-exporter &&  tolleiv/jenkins_exporter
+also is a better choose
 
 * some config
 
@@ -48,13 +49,24 @@ services:
       image: jenkins/jenkins:lts-slim
       ports:
       - "8080:8080"
-    jenkins-exporter:
+    jenkins-exporter2:
       image: tboerger/jenkins-exporter
       command: -jenkins.address=http://jenkins:8080 -jenkins.password=dalong -jenkins.username=admin
       ports:
+      - "9103:9103"
+    jenkins-exporter3:
+      image: tolleiv/jenkins_exporter
+      command: -j=http://jenkins:8080 --password=dalong --user=admin
+      ports:
+      - "9119:9118"
+    jenkins-exporter:
+      image: dalongrong/jenkins_exporter
+      env_file:
+      - .env
+      ports:
       - "9118:9118"
     grafana:
-      image: grafana/grafana
+      image: grafana/grafana    
       ports:
       - "3000:3000"
     prometheus:
@@ -65,3 +77,4 @@ services:
       - "9090:9090"  
   
 ```
+
