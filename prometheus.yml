@@ -16,4 +16,4 @@ scrape_configs:
     scrape_interval: 10s
     scrape_timeout: 10s
     static_configs:
-      - targets: ['jenkins-exporter2:9103']
+      - targets: ['jenkins-exporter3:9118']
